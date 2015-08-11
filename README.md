@@ -8,7 +8,7 @@ IMM-Module CHANGELOG
 
 	CHANGE:			      	Content-based help Improvements.
 	AFFECTED FUNCTIONS:		ALL.
-	DESCRIPTION:	    		".PARAMETER" tags edited.
+	DESCRIPTION:	    	".PARAMETER" tags edited.
 	
 	CHANGE:			      	Bugfix.
 	AFFECTED FUNCTIONS:		All functions that support '-Confirm' parameter.
@@ -18,7 +18,7 @@ IMM-Module CHANGELOG
 	
 	CHANGE:		      		Function Improvements.
 	AFFECTED FUNCTIONS:		Get-IMMISO, Mount-IMMISO.
-	DESCRIPTION:	    		Added 'rdmount' running process check in the 'Begin' scope before function call.
+	DESCRIPTION:	    	Added 'rdmount' running process check in the 'Begin' scope before function call.
 	
 	CHANGE:			      	Function Improvements.
 	AFFECTED FUNCTIONS:		Set-IMMServerBootOrder.
