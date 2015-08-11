@@ -27,7 +27,7 @@
 .NOTES
 	Author: Roman Gelman
 .LINK
-	http://rgel75.wix.com/blog
+	http://rgel75.wix.com/blog#!PowerShell-module-for-IBM-servers%E2%80%99-management/c1tye/55c74e4e0cf25fa64a0efdd3
 #>
 
 #region Params
