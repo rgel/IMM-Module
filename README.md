@@ -18,7 +18,7 @@ IMM-Module CHANGELOG
 	
 	CHANGE:			      	Bugfix.
 	AFFECTED FUNCTIONS:		All functions that support '-Confirm' parameter.
-	DESCRIPTION:    		'$IMM' variable replaced with '$module' in $PSCmdlet.ShouldProcess($module,"") method.
+	DESCRIPTION:    		'$IMM' variable replaced by '$module' in $PSCmdlet.ShouldProcess($module,"") method.
 
 1.1 - 27/05/2015
 	
