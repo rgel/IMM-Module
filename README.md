@@ -4,6 +4,12 @@ http://rgel75.wix.com/blog#!PowerShell-module-for-IBM-servers%E2%80%99-managemen
 
 IMM-Module CHANGELOG
 
+1.3 - 25/08/2015
+
+	CHANGE:				Function Improvements.
+	AFFECTED FUNCTIONS:		Get-IMMSubnet.
+	DESCRIPTION:			Added new parameter -ExcludeIP.
+	
 1.2 - 23/07/2015
 
 	CHANGE:			      	Content-based help Improvements.
