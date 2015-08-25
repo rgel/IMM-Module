@@ -6,7 +6,7 @@ IMM-Module CHANGELOG
 
 1.3 - 25/08/2015
 
-	CHANGE:				Function Improvements.
+	CHANGE:					Function Improvements.
 	AFFECTED FUNCTIONS:		Get-IMMSubnet.
 	DESCRIPTION:			Added new parameter -ExcludeIP.
 	
