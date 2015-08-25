@@ -2,23 +2,29 @@
 .NOTES
 	IMM-Module CHANGELOG
 	
+	1.3 - 25/08/2015
+
+		CHANGE:				Function Improvements.
+		AFFECTED FUNCTIONS:		Get-IMMSubnet.
+		DESCRIPTION:			Added new parameter -ExcludeIP.
+		
 	1.2 - 23/07/2015
 
-		CHANGE:					Content-based help Improvements.
+		CHANGE:				Content-based help Improvements.
 		AFFECTED FUNCTIONS:		ALL.
 		DESCRIPTION:			".PARAMETER" tags edited.
 		
-		CHANGE:					Bugfix.
+		CHANGE:				Bugfix.
 		AFFECTED FUNCTIONS:		All functions that support '-Confirm' parameter.
-		DESCRIPTION:			'$IMM' variable replaced with '$module' in $PSCmdlet.ShouldProcess($module,"") method.
+		DESCRIPTION:			'$IMM' variable replaced by '$module' in $PSCmdlet.ShouldProcess($module,"") method.
 	
 	1.1 - 27/05/2015
 		
-		CHANGE:					Function Improvements.
+		CHANGE:				Function Improvements.
 		AFFECTED FUNCTIONS:		Get-IMMISO, Mount-IMMISO.
 		DESCRIPTION:			Added 'rdmount' running process check in the 'Begin' scope before function call.
 		
-		CHANGE:					Function Improvements.
+		CHANGE:				Function Improvements.
 		AFFECTED FUNCTIONS:		Set-IMMServerBootOrder.
 		DESCRIPTION:			Added 'Windows Boot Manager' entry in [ValidateSet()] statement for all Boot devices.
 	
@@ -794,6 +800,8 @@ Function Get-IMMSettings {
 	Get-IMMSettings -IMM "10.99.1.150" -IMMLogin yourlogin -IMMPwd yourpassword |ft -AutoSize
 .EXAMPLE
 	Get-IMMSettings "10.99.1.150" |select Group,'Param',Value |? {$_.Group -eq 'pxe'} |ft -AutoSize
+.EXAMPLE
+	Get-IMMSettings "10.99.1.150" |? {$_.Param -like 'ntp*'}
 .EXAMPLE
 	Get-IMMSettings "10.99.1.150" |Export-Csv -NoTypeInformation -Path 'C:\reports\immSettings.csv'
 .EXAMPLE
@@ -1597,17 +1605,19 @@ Function Get-IMMSubnet {
 .DESCRIPTION
 	Helper function, used to assist to all other functions.
 	This function enumerates possible IP addresses
-	within Class-C network subnet or within IP range.
-.PARAMETER Subnet/Network
+	within Class-C network subnet or IP range with possibility to exclude particular addresses.
+.PARAMETER Subnet
     Class C network subnet (must end by zero).
-.PARAMETER StartIP/FirstIP (optional, default is 1)
+.PARAMETER StartIP
     First IP address in range.
-.PARAMETER EndIP/LastIP (optional, default is 254)
+.PARAMETER EndIP
     Last IP address in range.
+.PARAMETER ExcludeIP
+	Exclude these IPs from the range/subnet.
 .EXAMPLE
-	Get-IMMSubnet -Subnet "10.98.1.0" -StartIP 50 -EndIP 100
+	Get-IMMSubnet -Subnet "10.98.1.0" -StartIP 50 -EndIP 100 -ExcludeIP 61,73,99
 .EXAMPLE
-	Get-IMMSubnet "192.168.1.0" 100 120
+	Get-IMMSubnet "192.168.1.0" 100 120 111,115
 .NOTES
 	Author: Roman Gelman
 .LINK
@@ -1632,17 +1642,27 @@ Param (
 		[ValidateRange(2,254)]
 		[Alias("LastIP")]
 	[System.Int32]$EndIP = 254
+	,
+	[Parameter(Mandatory=$false,Position=3,HelpMessage="Exclude these IPs from the range")]
+		[ValidateRange(1,254)]
+		[Alias("ExcludeIPs")]
+	[System.Int32[]]$ExcludeIP
 )
 
 Begin {
 
 	If ($StartIP -ge $EndIP) {Throw "Last IP must be greater than First IP"}
+	Foreach ($exclude in $ExcludeIP) {
+		If ($exclude -le $StartIP -or $exclude -ge $EndIP) {Throw "IP address '$exclude' is out of range '$StartIP-$EndIP'"}
+	}
 }
 
 Process {
 	$SubnetC = $Subnet.TrimEnd('0')
 	$sub = @()
-	For ($i=$StartIP;$i -le $EndIP;$i++) {$sub += "$SubnetC$i"}
+	For ($i=$StartIP;$i -le $EndIP;$i++) {
+		If ($ExcludeIP -notcontains $i) {$sub += "$SubnetC$i"}
+	}
 	$sub
 }
 
