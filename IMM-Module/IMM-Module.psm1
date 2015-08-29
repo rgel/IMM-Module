@@ -4,27 +4,27 @@
 	
 	1.3 - 25/08/2015
 
-		CHANGE:				Function Improvements.
+		CHANGE:					Function Improvements.
 		AFFECTED FUNCTIONS:		Get-IMMSubnet.
 		DESCRIPTION:			Added new parameter -ExcludeIP.
 		
 	1.2 - 23/07/2015
 
-		CHANGE:				Content-based help Improvements.
+		CHANGE:					Content-based help Improvements.
 		AFFECTED FUNCTIONS:		ALL.
 		DESCRIPTION:			".PARAMETER" tags edited.
 		
-		CHANGE:				Bugfix.
+		CHANGE:					Bugfix.
 		AFFECTED FUNCTIONS:		All functions that support '-Confirm' parameter.
 		DESCRIPTION:			'$IMM' variable replaced by '$module' in $PSCmdlet.ShouldProcess($module,"") method.
 	
 	1.1 - 27/05/2015
 		
-		CHANGE:				Function Improvements.
+		CHANGE:					Function Improvements.
 		AFFECTED FUNCTIONS:		Get-IMMISO, Mount-IMMISO.
 		DESCRIPTION:			Added 'rdmount' running process check in the 'Begin' scope before function call.
 		
-		CHANGE:				Function Improvements.
+		CHANGE:					Function Improvements.
 		AFFECTED FUNCTIONS:		Set-IMMServerBootOrder.
 		DESCRIPTION:			Added 'Windows Boot Manager' entry in [ValidateSet()] statement for all Boot devices.
 	
@@ -82,7 +82,7 @@ Function Get-IMMServerPowerState {
 .NOTES
 	Author: Roman Gelman
 .LINK
-	http://rgel75.wix.com/blog#!PowerShell-module-for-IBM-servers%E2%80%99-management/c1tye/55c74e4e0cf25fa64a0efdd3
+	http://goo.gl/VCjjFI
 .OUTPUTS
 	Collection of PSObjects with 2 Properties: IMM,PowerState.
 	PowerState may be one of the three options: PoweredOn,PoweredOff,Unknown.
@@ -200,7 +200,7 @@ Function Start-IMMServer {
 .NOTES
 	Author: Roman Gelman
 .LINK
-	http://rgel75.wix.com/blog#!PowerShell-module-for-IBM-servers%E2%80%99-management/c1tye/55c74e4e0cf25fa64a0efdd3
+	http://goo.gl/VCjjFI
 .OUTPUTS
 	Collection of PSObjects with 2 Properties: IMM,PowerState.
 	PowerState may be one of the two options: PoweredOn,Unknown.
@@ -315,7 +315,7 @@ Function Shutdown-IMMServerOS {
 .NOTES
 	Author: Roman Gelman
 .LINK
-	http://rgel75.wix.com/blog#!PowerShell-module-for-IBM-servers%E2%80%99-management/c1tye/55c74e4e0cf25fa64a0efdd3
+	http://goo.gl/VCjjFI
 .OUTPUTS
 	Collection of PSObjects with 2 Properties: IMM,PowerState.
 	PowerState may be one of the two options: PoweredOff,Unknown.
@@ -433,7 +433,7 @@ Function Reboot-IMMServerOS {
 .NOTES
 	Author: Roman Gelman
 .LINK
-	http://rgel75.wix.com/blog#!PowerShell-module-for-IBM-servers%E2%80%99-management/c1tye/55c74e4e0cf25fa64a0efdd3
+	http://goo.gl/VCjjFI
 .OUTPUTS
 	Collection of PSObjects with 2 Properties: IMM,PowerState.
 	PowerState may be one of the two options: Rebooted,Unknown.
@@ -551,7 +551,7 @@ Function Restart-IMM {
 .NOTES
 	Author: Roman Gelman
 .LINK
-	http://rgel75.wix.com/blog#!PowerShell-module-for-IBM-servers%E2%80%99-management/c1tye/55c74e4e0cf25fa64a0efdd3
+	http://goo.gl/VCjjFI
 .OUTPUTS
 	Collection of PSObjects with 2 Properties: IMM,PowerState.
 	PowerState may be one of the two options: Restarted,Unknown.
@@ -670,7 +670,7 @@ Function Get-IMMInfo {
 .NOTES
 	Author: Roman Gelman
 .LINK
-	http://rgel75.wix.com/blog#!PowerShell-module-for-IBM-servers%E2%80%99-management/c1tye/55c74e4e0cf25fa64a0efdd3
+	http://goo.gl/VCjjFI
 .OUTPUTS
 	Collection of PSObjects with 8 Properties: IMM,DisplayName,HostName,Server,Model,Serial,Contact,Location.
 	Properties may be empty.
@@ -809,7 +809,7 @@ Function Get-IMMSettings {
 .NOTES
 	Author: Roman Gelman
 .LINK
-	http://rgel75.wix.com/blog#!PowerShell-module-for-IBM-servers%E2%80%99-management/c1tye/55c74e4e0cf25fa64a0efdd3
+	http://goo.gl/VCjjFI
 .OUTPUTS
 	Collection of PSObjects with 4 Properties: IMM,Group,Param,Value or $null.
 	The major reasons for $null are bad credentials or
@@ -934,7 +934,7 @@ Function Get-IMMParam {
 .NOTES
 	Author: Roman Gelman
 .LINK
-	http://rgel75.wix.com/blog#!PowerShell-module-for-IBM-servers%E2%80%99-management/c1tye/55c74e4e0cf25fa64a0efdd3
+	http://goo.gl/VCjjFI
 .OUTPUTS
 	Collection of PSObjects with 3 Properties: IMM,Param,Value.
 	All allowed values for '-Param' are [ValidateSet()] attribute members.
@@ -1097,7 +1097,7 @@ Function Set-IMMParam {
 .NOTES
 	Author: Roman Gelman
 .LINK
-	http://rgel75.wix.com/blog#!PowerShell-module-for-IBM-servers%E2%80%99-management/c1tye/55c74e4e0cf25fa64a0efdd3
+	http://goo.gl/VCjjFI
 .OUTPUTS
 	Collection of PSObjects with 3 Properties: IMM,Param,Value.
 	All allowed values for '-Param' are [ValidateSet()] attribute members.
@@ -1251,7 +1251,7 @@ Function Get-IMMSystemEventLog {
 .NOTES
 	Author: Roman Gelman
 .LINK
-	http://rgel75.wix.com/blog#!PowerShell-module-for-IBM-servers%E2%80%99-management/c1tye/55c74e4e0cf25fa64a0efdd3
+	http://goo.gl/VCjjFI
 .OUTPUTS
 	Collection of PSObjects with 7 Properties: IMM,Version,Entries,FreeBytes,Used%,LastAddTime,LastDelTime.
 	All properties except IMM may be empty.
@@ -1392,7 +1392,7 @@ Function Clear-IMMSystemEventLog {
 .NOTES
 	Author: Roman Gelman
 .LINK
-	http://rgel75.wix.com/blog#!PowerShell-module-for-IBM-servers%E2%80%99-management/c1tye/55c74e4e0cf25fa64a0efdd3
+	http://goo.gl/VCjjFI
 .OUTPUTS
 	Collection of PSObjects with 7 Properties: IMM,Version,Entries,FreeBytes,Used%,LastAddTime,LastDelTime.
 	All properties except IMM may be empty.
@@ -1508,7 +1508,7 @@ Function Get-IMMSystemEventLogEntries {
 .NOTES
 	Author: Roman Gelman
 .LINK
-	http://rgel75.wix.com/blog#!PowerShell-module-for-IBM-servers%E2%80%99-management/c1tye/55c74e4e0cf25fa64a0efdd3
+	http://goo.gl/VCjjFI
 .OUTPUTS
 	Collection of PSObjects with 7 Properties: IMM,Num,Date,Time,Entry,Event,Assert or $null.
 	The major reasons for $null are bad credentials or
@@ -1621,7 +1621,7 @@ Function Get-IMMSubnet {
 .NOTES
 	Author: Roman Gelman
 .LINK
-	http://rgel75.wix.com/blog#!PowerShell-module-for-IBM-servers%E2%80%99-management/c1tye/55c74e4e0cf25fa64a0efdd3
+	http://goo.gl/VCjjFI
 .OUTPUTS
 	IPv4 addresses collection.
 #>
@@ -1695,7 +1695,7 @@ Function Connect-IMMSSH {
 .NOTES
 	Author: Roman Gelman
 .LINK
-	http://rgel75.wix.com/blog#!PowerShell-module-for-IBM-servers%E2%80%99-management/c1tye/55c74e4e0cf25fa64a0efdd3
+	http://goo.gl/VCjjFI
 #>
 
 [CmdletBinding(DefaultParameterSetName='USERPWDPAIR')]
@@ -1782,7 +1782,7 @@ Function Get-IMMServerBootOrder {
 .NOTES
 	Author: Roman Gelman
 .LINK
-	http://rgel75.wix.com/blog#!PowerShell-module-for-IBM-servers%E2%80%99-management/c1tye/55c74e4e0cf25fa64a0efdd3
+	http://goo.gl/VCjjFI
 .OUTPUTS
 	Collection of PSObjects with 5 Properties: IMM,Boot1,Boot2,Boot3,Boot4.
 	Some properties may be empty (no boot device set at particular position).
@@ -1922,7 +1922,7 @@ Function Set-IMMServerBootOrder {
 .NOTES
 	Author: Roman Gelman
 .LINK
-	http://rgel75.wix.com/blog#!PowerShell-module-for-IBM-servers%E2%80%99-management/c1tye/55c74e4e0cf25fa64a0efdd3
+	http://goo.gl/VCjjFI
 .OUTPUTS
 	Collection of PSObjects with 5 Properties: IMM,Boot1,Boot2,Boot3,Boot4.
 	Properties may be empty.
@@ -2079,7 +2079,7 @@ Function Mount-IMMISO {
 .NOTES
 	Author: Roman Gelman
 .LINK
-	http://rgel75.wix.com/blog#!PowerShell-module-for-IBM-servers%E2%80%99-management/c1tye/55c74e4e0cf25fa64a0efdd3
+	http://goo.gl/VCjjFI
 .OUTPUTS
 	PSObject with 2 Properties: IMM,ISO.
 	'ISO' property may be empty.
@@ -2211,7 +2211,7 @@ Function Get-IMMISO {
 .NOTES
 	Author: Roman Gelman
 .LINK
-	http://rgel75.wix.com/blog#!PowerShell-module-for-IBM-servers%E2%80%99-management/c1tye/55c74e4e0cf25fa64a0efdd3
+	http://goo.gl/VCjjFI
 .OUTPUTS
 	'True' if some ISO mounted to Virtual Media Drive.
 	'False' in all other cases: no media mounted, connection failed and so on.
@@ -2295,7 +2295,7 @@ Function Unmount-IMMISO {
 .NOTES
 	Author: Roman Gelman
 .LINK
-	http://rgel75.wix.com/blog#!PowerShell-module-for-IBM-servers%E2%80%99-management/c1tye/55c74e4e0cf25fa64a0efdd3
+	http://goo.gl/VCjjFI
 .OUTPUTS
 	'True' if some ISO unmounted.
 	'False' in all other cases: no unmount operation has been performed, connection failed and so on.
@@ -2377,7 +2377,7 @@ Function Get-IMM2FoDKeys {
 .NOTES
 	Author: Roman Gelman
 .LINK
-	http://rgel75.wix.com/blog#!PowerShell-module-for-IBM-servers%E2%80%99-management/c1tye/55c74e4e0cf25fa64a0efdd3
+	http://goo.gl/VCjjFI
 .OUTPUTS
 	Collection of PSObjects with 7 Properties: IMM,Num,KeyID,Status,LicensedFoD,RemindUser,ExpiredDate or $null.
 	The major reasons for $null are bad credentials or
@@ -2505,7 +2505,7 @@ Function Add-IMM2FoDKey {
 .NOTES
 	Author: Roman Gelman
 .LINK
-	http://rgel75.wix.com/blog#!PowerShell-module-for-IBM-servers%E2%80%99-management/c1tye/55c74e4e0cf25fa64a0efdd3
+	http://goo.gl/VCjjFI
 .OUTPUTS
 	All currently installed FoD licene keys.
 	Collection of PSObjects with 7 Properties: IMM,Num,KeyID,Status,LicensedFoD,RemindUser,ExpiredDate or $null.
