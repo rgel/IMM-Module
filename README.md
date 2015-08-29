@@ -1,6 +1,7 @@
 # IMM-Module
 
-http://rgel75.wix.com/blog#!PowerShell-module-for-IBM-servers%E2%80%99-management/c1tye/55c74e4e0cf25fa64a0efdd3
+http://rgel75.wix.com/blog
+http://goo.gl/VCjjFI
 
 IMM-Module CHANGELOG
 
