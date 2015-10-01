@@ -1,5 +1,5 @@
 # IMM-Module
-### <mark>PowerShell module for IBM servers’ management</mark>
+### PowerShell module for IBM servers’ management
 
 <http://goo.gl/VCjjFI> <i>Blog Article</i>
 
