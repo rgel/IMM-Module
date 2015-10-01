@@ -1,6 +1,7 @@
 # IMM-Module
+### PowerShell module for IBM servers’ management
 
-[Article]: (http://goo.gl/VCjjFI) (PowerShell module for IBM servers’ management)
+<http://goo.gl/VCjjFI> "PowerShell module for IBM servers’ management"
 
 To install this module, drop the entire 'IMM-Module' folder into one of your module directories.
 
@@ -16,7 +17,7 @@ To see the commands imported, type `gc -Module IMM-Module`.
 
 For help on each individual cmdlet or function, run `Get-Help CmdletName -Full [-Online][-Examples]`.
 
-### IMM-Module CHANGELOG
+##### IMM-Module CHANGELOG
 
 VERSION|DATE|CHANGE|AFFECTED FUNCTIONS|DESCRIPTION
 ----|----|----|----|----|
@@ -25,4 +26,4 @@ VERSION|DATE|CHANGE|AFFECTED FUNCTIONS|DESCRIPTION
 1.2|23/07/2015|Bugfix|All functions that support '-Confirm' parameter|'$IMM' variable replaced by '$module' in $PSCmdlet.ShouldProcess($module,"") method
 1.1|27/05/2015|Function Improvements|Get-IMMISO, Mount-IMMISO|Added 'rdmount' running process check in the 'Begin' scope before function call
 1.1|27/05/2015|Function Improvements|Set-IMMServerBootOrder|Added 'Windows Boot Manager' entry in [ValidateSet()] statement for all Boot devices
-1.0|17/05/2015|Initial release||
+1.0|17/05/2015|Initial release|21 Functions|
