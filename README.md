@@ -1,9 +1,9 @@
 # IMM-Module
 ### PowerShell module for IBM servers’ management
 
-<http://goo.gl/VCjjFI> "Blog Article"
+<http://goo.gl/VCjjFI> <i>Blog Article</i>
 
-To install this module, drop the entire 'IMM-Module' folder into one of your module directories.
+To install this module, drop the entire '<b>IMM-Module</b>' folder into one of your module directories.
 
 The default PowerShell module paths are listed in the `$env:PSModulePath` environment variable.
 
