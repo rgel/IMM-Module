@@ -6,7 +6,7 @@ http://goo.gl/VCjjFI
 
 To install this module, drop the entire 'IMM-Module' folder into one of your module directories.
 
-The default PowerShell module paths are listed in the $env:PSModulePath environment variable.
+The default PowerShell module paths are listed in the `$env:PSModulePath` environment variable.
 
 The default per-user module path is:       "$env:HOMEDRIVE$env:HOMEPATH\Documents\WindowsPowerShell\Modules".
 
