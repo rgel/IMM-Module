@@ -1,8 +1,15 @@
 # IMM-Module
 
 http://rgel75.wix.com/blog
-
 http://goo.gl/VCjjFI
+
+To install this module, drop the entire 'IMM-Module' folder into one of your module directories.
+The default PowerShell module paths are listed in the $env:PSModulePath environment variable.
+The default per-user module path is:       "$env:HOMEDRIVE$env:HOMEPATH\Documents\WindowsPowerShell\Modules".
+The default computer-level module path is: "$env:windir\System32\WindowsPowerShell\v1.0\Modules".
+To use the module, type following command: ipmo IMM-Module -Force -Verbose
+To see the commands imported, type gc -Module IMM-Module
+For help on each individual cmdlet or function, run Get-Help CmdletName -Full [-Online][-Examples].
 
 IMM-Module CHANGELOG
 
