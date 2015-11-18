@@ -11,9 +11,9 @@ The default per-user module path is: `"$env:HOMEDRIVE$env:HOMEPATH\Documents\Win
 
 The default computer-level module path is: `"$env:windir\System32\WindowsPowerShell\v1.0\Modules"`.
 
-To use the module, type the following: `ipmo IMM-Module -Force -Verbose`.
+To use the module, type the following: `Import-Module IMM-Module -Force -Verbose`.
 
-To see the commands imported, type `gc -Module IMM-Module`.
+To see the commands imported, type `Get-Command -Module IMM-Module`.
 
 For help on each individual cmdlet or function, run `Get-Help CmdletName -Full [-Online][-Examples]`.
 
