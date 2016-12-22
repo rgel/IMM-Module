@@ -1,36 +1,3 @@
-<#
-.NOTES
-	IMM-Module CHANGELOG
-	
-	1.3 - 25/08/2015
-
-		CHANGE:					Function Improvements.
-		AFFECTED FUNCTIONS:		Get-IMMSubnet.
-		DESCRIPTION:			Added new parameter -ExcludeIP.
-		
-	1.2 - 23/07/2015
-
-		CHANGE:					Content-based help Improvements.
-		AFFECTED FUNCTIONS:		ALL.
-		DESCRIPTION:			".PARAMETER" tags edited.
-		
-		CHANGE:					Bugfix.
-		AFFECTED FUNCTIONS:		All functions that support '-Confirm' parameter.
-		DESCRIPTION:			'$IMM' variable replaced by '$module' in $PSCmdlet.ShouldProcess($module,"") method.
-	
-	1.1 - 27/05/2015
-		
-		CHANGE:					Function Improvements.
-		AFFECTED FUNCTIONS:		Get-IMMISO, Mount-IMMISO.
-		DESCRIPTION:			Added 'rdmount' running process check in the 'Begin' scope before function call.
-		
-		CHANGE:					Function Improvements.
-		AFFECTED FUNCTIONS:		Set-IMMServerBootOrder.
-		DESCRIPTION:			Added 'Windows Boot Manager' entry in [ValidateSet()] statement for all Boot devices.
-	
-	1.0 - 17/05/2015 - Initial release
-#>
-
 #region Global variables used by all functions in the module
 
 <#
@@ -82,7 +49,7 @@ Function Get-IMMServerPowerState {
 .NOTES
 	Author: Roman Gelman
 .LINK
-	http://goo.gl/VCjjFI
+	http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management
 .OUTPUTS
 	Collection of PSObjects with 2 Properties: IMM,PowerState.
 	PowerState may be one of the three options: PoweredOn,PoweredOff,Unknown.
@@ -130,7 +97,6 @@ Begin {
 		$IMMPwd   = $IMMCred.GetNetworkCredential().Password
 	}
 	
-	$i = 0
 }
 
 Process {
@@ -144,8 +110,7 @@ Process {
 		$regexSuccOn  = "currently\sOn!"
 		$regexSuccOff = "currently\sOff!"
 		
-		$i += 1
-		Write-Progress -Activity "Gathering Server Power State" -Status "[$i] $module"
+		Write-Progress -Activity "Gathering Server Power State" -Status "[$module]"
 		
 		$ASUPrint = Invoke-Expression -Command $ASUCmdLine
 		
@@ -200,7 +165,7 @@ Function Start-IMMServer {
 .NOTES
 	Author: Roman Gelman
 .LINK
-	http://goo.gl/VCjjFI
+	http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management
 .OUTPUTS
 	Collection of PSObjects with 2 Properties: IMM,PowerState.
 	PowerState may be one of the two options: PoweredOn,Unknown.
@@ -248,7 +213,6 @@ Begin {
 		$IMMPwd   = $IMMCred.GetNetworkCredential().Password
 	}
 	
-	$i = 0
 }
 
 Process {
@@ -261,8 +225,7 @@ Process {
 		$ASUMatch     = $null
 		$regexSuccess = "Server\sPowered\sOn"
 		
-		$i += 1
-		Write-Progress -Activity "Powering On Server" -Status "[$i] $module"
+		Write-Progress -Activity "Powering On Server" -Status "[$module]"
 		
 		$ASUPrint = Invoke-Expression -Command $ASUCmdLine
 		$ASUMatch = [regex]::match($ASUPrint, $regexSuccess)
@@ -315,7 +278,7 @@ Function Shutdown-IMMServerOS {
 .NOTES
 	Author: Roman Gelman
 .LINK
-	http://goo.gl/VCjjFI
+	http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management
 .OUTPUTS
 	Collection of PSObjects with 2 Properties: IMM,PowerState.
 	PowerState may be one of the two options: PoweredOff,Unknown.
@@ -363,7 +326,6 @@ Begin {
 		$IMMPwd   = $IMMCred.GetNetworkCredential().Password
 	}
 	
-	$i = 0
 }
 
 Process {
@@ -378,8 +340,7 @@ Process {
 			$ASUMatch     = $null
 			$regexSuccess = 'Server\sPowered\soff'
 			
-			$i += 1
-			Write-Progress -Activity "Powering Off Server" -Status "[$i] $module"
+			Write-Progress -Activity "Powering Off Server" -Status "[$module]"
 			
 			$ASUPrint = Invoke-Expression -Command $ASUCmdLine
 			$ASUMatch = [regex]::match($ASUPrint, $regexSuccess)
@@ -433,7 +394,7 @@ Function Reboot-IMMServerOS {
 .NOTES
 	Author: Roman Gelman
 .LINK
-	http://goo.gl/VCjjFI
+	http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management
 .OUTPUTS
 	Collection of PSObjects with 2 Properties: IMM,PowerState.
 	PowerState may be one of the two options: Rebooted,Unknown.
@@ -481,7 +442,6 @@ Begin {
 		$IMMPwd   = $IMMCred.GetNetworkCredential().Password
 	}
 	
-	$i = 0
 }
 
 Process {
@@ -496,8 +456,7 @@ Process {
 			$ASUMatch     = $null
 			$regexSuccess = 'Issuing\ssystem\sreboot\scommand'
 			
-			$i += 1
-			Write-Progress -Activity "Rebooting Server" -Status "[$i] $module"
+			Write-Progress -Activity "Rebooting Server" -Status "[$module]"
 			
 			$ASUPrint = Invoke-Expression -Command $ASUCmdLine
 			$ASUMatch = [regex]::match($ASUPrint, $regexSuccess)
@@ -551,7 +510,7 @@ Function Restart-IMM {
 .NOTES
 	Author: Roman Gelman
 .LINK
-	http://goo.gl/VCjjFI
+	http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management
 .OUTPUTS
 	Collection of PSObjects with 2 Properties: IMM,PowerState.
 	PowerState may be one of the two options: Restarted,Unknown.
@@ -599,7 +558,6 @@ Begin {
 		$IMMPwd   = $IMMCred.GetNetworkCredential().Password
 	}
 	
-	$i = 0
 }
 
 Process {
@@ -614,8 +572,7 @@ Process {
 			$ASUMatch     = $null
 			$regexSuccess = 'imm\shas\sstarted\sthe\sreset'
 			
-			$i += 1
-			Write-Progress -Activity "Restarting IMM" -Status "[$i] $module"
+			Write-Progress -Activity "Restarting IMM" -Status "[$module]"
 			
 			$ASUPrint = Invoke-Expression -Command $ASUCmdLine
 			$ASUMatch = [regex]::match($ASUPrint, $regexSuccess)
@@ -670,7 +627,7 @@ Function Get-IMMInfo {
 .NOTES
 	Author: Roman Gelman
 .LINK
-	http://goo.gl/VCjjFI
+	http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management
 .OUTPUTS
 	Collection of PSObjects with 8 Properties: IMM,DisplayName,HostName,Server,Model,Serial,Contact,Location.
 	Properties may be empty.
@@ -719,7 +676,6 @@ Begin {
 		$IMMPwd   = $IMMCred.GetNetworkCredential().Password
 	}
 	
-	$i = 0
 }
 
 Process {
@@ -732,8 +688,7 @@ Process {
 		$ASUMatch     = $null
 		$regexSuccess = "Connected to IMM at IP address.+"
 
-		$i += 1
-		Write-Progress -Activity "Gathering IMM Info" -Status "[$i] $module"
+		Write-Progress -Activity "Gathering IMM Info" -Status "[$module]"
 
 		$ASUPrint = Invoke-Expression -Command $ASUCmdLine
 		$ASUMatch = [regex]::match($ASUPrint, $regexSuccess)
@@ -809,7 +764,7 @@ Function Get-IMMSettings {
 .NOTES
 	Author: Roman Gelman
 .LINK
-	http://goo.gl/VCjjFI
+	http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management
 .OUTPUTS
 	Collection of PSObjects with 4 Properties: IMM,Group,Param,Value or $null.
 	The major reasons for $null are bad credentials or
@@ -934,7 +889,7 @@ Function Get-IMMParam {
 .NOTES
 	Author: Roman Gelman
 .LINK
-	http://goo.gl/VCjjFI
+	http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management
 .OUTPUTS
 	Collection of PSObjects with 3 Properties: IMM,Param,Value.
 	All allowed values for '-Param' are [ValidateSet()] attribute members.
@@ -991,7 +946,6 @@ Begin {
 		$IMMPwd   = $IMMCred.GetNetworkCredential().Password
 	}
 	
-	$i = 0
 }
 
 Process {
@@ -1004,8 +958,7 @@ Process {
 		$ASUMatch     = $null
 		$regexSuccess = "Connected to IMM at IP address.+"
 
-		$i += 1
-		Write-Progress -Activity "Gathering IMM '$Param' parameter" -Status "[$i] $module"
+		Write-Progress -Activity "Gathering IMM '$Param' parameter" -Status "[$module]"
 
 		$ASUPrint = Invoke-Expression -Command $ASUCmdLine
 		$ASUMatch = [regex]::match($ASUPrint, $regexSuccess)
@@ -1097,7 +1050,7 @@ Function Set-IMMParam {
 .NOTES
 	Author: Roman Gelman
 .LINK
-	http://goo.gl/VCjjFI
+	http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management
 .OUTPUTS
 	Collection of PSObjects with 3 Properties: IMM,Param,Value.
 	All allowed values for '-Param' are [ValidateSet()] attribute members.
@@ -1158,8 +1111,6 @@ Begin {
 		$IMMPwd   = $IMMCred.GetNetworkCredential().Password
 	}
 	
-	$i = 0
-	
 	$quote = '`"'
 	If ($Value -match '^.+\s.+$') {$Value = "$quote$Value$quote"}
 }
@@ -1176,11 +1127,10 @@ Process {
 			$ASUMatch     = $null
 			$regexSuccess = "Command completed successfully"
 
-			$i += 1
 			If ($Param -notmatch 'password') {
-				Write-Progress -Activity "Setting IMM '$Param' parameter to value '$Value'" -Status "[$i] $module"
+				Write-Progress -Activity "Setting IMM '$Param' parameter to value '$Value'" -Status "[$module]"
 			} Else {
-				Write-Progress -Activity "Setting IMM '$Param' parameter" -Status "[$i] $module"
+				Write-Progress -Activity "Setting IMM '$Param' parameter" -Status "[$module]"
 			}
 
 			$ASUPrint = Invoke-Expression -Command $ASUCmdLine
@@ -1251,7 +1201,7 @@ Function Get-IMMSystemEventLog {
 .NOTES
 	Author: Roman Gelman
 .LINK
-	http://goo.gl/VCjjFI
+	http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management
 .OUTPUTS
 	Collection of PSObjects with 7 Properties: IMM,Version,Entries,FreeBytes,Used%,LastAddTime,LastDelTime.
 	All properties except IMM may be empty.
@@ -1300,7 +1250,6 @@ Begin {
 		$IMMPwd   = $IMMCred.GetNetworkCredential().Password
 	}
 	
-	$i = 0
 }
 
 Process {
@@ -1313,8 +1262,7 @@ Process {
 		$ASUMatch     = $null
 		$regexSuccess = "Connected to IMM at IP address.+"
 
-		$i += 1
-		Write-Progress -Activity "Gathering SEL Info" -Status "[$i] $module"
+		Write-Progress -Activity "Gathering SEL Info" -Status "[$module]"
 
 		$ASUPrint = Invoke-Expression -Command $ASUCmdLine
 		$ASUMatch = [regex]::match($ASUPrint, $regexSuccess)
@@ -1392,7 +1340,7 @@ Function Clear-IMMSystemEventLog {
 .NOTES
 	Author: Roman Gelman
 .LINK
-	http://goo.gl/VCjjFI
+	http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management
 .OUTPUTS
 	Collection of PSObjects with 7 Properties: IMM,Version,Entries,FreeBytes,Used%,LastAddTime,LastDelTime.
 	All properties except IMM may be empty.
@@ -1441,7 +1389,6 @@ Begin {
 		$IMMPwd   = $IMMCred.GetNetworkCredential().Password
 	}
 	
-	$i = 0
 }
 
 Process {
@@ -1456,8 +1403,7 @@ Process {
 			$ASUMatch     = $null
 			$regexSuccess = "Successfully clear"
 
-			$i += 1
-			Write-Progress -Activity "Clearing SEL" -Status "[$i] $module"
+			Write-Progress -Activity "Clearing SEL" -Status "[$module]"
 
 			$ASUPrint = Invoke-Expression -Command $ASUCmdLine
 			$ASUMatch = [regex]::match($ASUPrint, $regexSuccess)
@@ -1508,7 +1454,7 @@ Function Get-IMMSystemEventLogEntries {
 .NOTES
 	Author: Roman Gelman
 .LINK
-	http://goo.gl/VCjjFI
+	http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management
 .OUTPUTS
 	Collection of PSObjects with 7 Properties: IMM,Num,Date,Time,Entry,Event,Assert or $null.
 	The major reasons for $null are bad credentials or
@@ -1621,7 +1567,7 @@ Function Get-IMMSubnet {
 .NOTES
 	Author: Roman Gelman
 .LINK
-	http://goo.gl/VCjjFI
+	http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management
 .OUTPUTS
 	IPv4 addresses collection.
 #>
@@ -1695,7 +1641,7 @@ Function Connect-IMMSSH {
 .NOTES
 	Author: Roman Gelman
 .LINK
-	http://goo.gl/VCjjFI
+	http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management
 #>
 
 [CmdletBinding(DefaultParameterSetName='USERPWDPAIR')]
@@ -1782,7 +1728,7 @@ Function Get-IMMServerBootOrder {
 .NOTES
 	Author: Roman Gelman
 .LINK
-	http://goo.gl/VCjjFI
+	http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management
 .OUTPUTS
 	Collection of PSObjects with 5 Properties: IMM,Boot1,Boot2,Boot3,Boot4.
 	Some properties may be empty (no boot device set at particular position).
@@ -1828,7 +1774,6 @@ Begin {
 		$IMMPwd   = $IMMCred.GetNetworkCredential().Password
 	}
 	
-	$i = 0
 }
 
 Process {
@@ -1841,8 +1786,7 @@ Process {
 		$ASUMatch     = $null
 		$regexSuccess = "Connected to IMM at IP address.+"
 
-		$i += 1
-		Write-Progress -Activity "Gathering Server Boot Order" -Status "[$i] $module"
+		Write-Progress -Activity "Gathering Server Boot Order" -Status "[$module]"
 
 		$ASUPrint = Invoke-Expression -Command $ASUCmdLine
 		$ASUMatch = [regex]::match($ASUPrint, $regexSuccess)
@@ -1922,7 +1866,7 @@ Function Set-IMMServerBootOrder {
 .NOTES
 	Author: Roman Gelman
 .LINK
-	http://goo.gl/VCjjFI
+	http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management
 .OUTPUTS
 	Collection of PSObjects with 5 Properties: IMM,Boot1,Boot2,Boot3,Boot4.
 	Properties may be empty.
@@ -1995,7 +1939,6 @@ Begin {
 	If ($Boot3 -match '^.+\s.+$') {$bdev3 = "$quote$Boot3$quote"} Else {$bdev3 = $Boot3}
 	If ($Boot4 -match '^.+\s.+$') {$bdev4 = "$quote$Boot4$quote"} Else {$bdev4 = $Boot4}
 	
-	$i = 0
 }
 
 Process {
@@ -2010,8 +1953,7 @@ Process {
 			$ASUMatch     = $null
 			$regexSuccess = ".+Command completed successfully.*"
 
-			$i += 1
-			Write-Progress -Activity "Setting Server Boot Order" -Status "[$i] $module"
+			Write-Progress -Activity "Setting Server Boot Order" -Status "[$module]"
 
 			$ASUPrint = Invoke-Expression -Command $ASUCmdLine
 			$ASUMatch = [regex]::match($ASUPrint, $regexSuccess)
@@ -2079,7 +2021,7 @@ Function Mount-IMMISO {
 .NOTES
 	Author: Roman Gelman
 .LINK
-	http://goo.gl/VCjjFI
+	http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management
 .OUTPUTS
 	PSObject with 2 Properties: IMM,ISO.
 	'ISO' property may be empty.
@@ -2211,7 +2153,7 @@ Function Get-IMMISO {
 .NOTES
 	Author: Roman Gelman
 .LINK
-	http://goo.gl/VCjjFI
+	http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management
 .OUTPUTS
 	'True' if some ISO mounted to Virtual Media Drive.
 	'False' in all other cases: no media mounted, connection failed and so on.
@@ -2295,7 +2237,7 @@ Function Unmount-IMMISO {
 .NOTES
 	Author: Roman Gelman
 .LINK
-	http://goo.gl/VCjjFI
+	http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management
 .OUTPUTS
 	'True' if some ISO unmounted.
 	'False' in all other cases: no unmount operation has been performed, connection failed and so on.
@@ -2377,7 +2319,7 @@ Function Get-IMM2FoDKeys {
 .NOTES
 	Author: Roman Gelman
 .LINK
-	http://goo.gl/VCjjFI
+	http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management
 .OUTPUTS
 	Collection of PSObjects with 7 Properties: IMM,Num,KeyID,Status,LicensedFoD,RemindUser,ExpiredDate or $null.
 	The major reasons for $null are bad credentials or
@@ -2424,7 +2366,7 @@ Begin {
 		$IMMLogin = $IMMCred.GetNetworkCredential().UserName
 		$IMMPwd   = $IMMCred.GetNetworkCredential().Password
 	}
-	$i = 0
+
 }
 
 Process {
@@ -2438,8 +2380,7 @@ Process {
 		$regexSuccess = "Connected to CIMOM"
 		$regexLine    = '^(?<Num>\d+)\s{2,}(?<KeyID>.+)\s{2,}(?<Status>\w+)\s{2,}(?<LicensedFoD>.+?)\s{2,}(?<RemindUser>.+?)\s{2,}(?<ExpiredDate>.+)'
 
-		$i += 1
-		Write-Progress -Activity "Gathering FoD License Keys" -Status "[$i] $module"
+		Write-Progress -Activity "Gathering FoD License Keys" -Status "[$module]"
 
 		$ASUPrint = Invoke-Expression -Command $ASUCmdLine
 		$ASUMatch = [regex]::match($ASUPrint, $regexSuccess)
@@ -2505,7 +2446,7 @@ Function Add-IMM2FoDKey {
 .NOTES
 	Author: Roman Gelman
 .LINK
-	http://goo.gl/VCjjFI
+	http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management
 .OUTPUTS
 	All currently installed FoD licene keys.
 	Collection of PSObjects with 7 Properties: IMM,Num,KeyID,Status,LicensedFoD,RemindUser,ExpiredDate or $null.
@@ -2591,3 +2532,53 @@ Process {
 }
 
 } #EndFunction Add-IMM2FoDKey #21
+
+Function Get-IMMSupervisorCred {
+
+<#
+.SYNOPSIS
+	Decryptes an encrypted credential file.
+.DESCRIPTION
+	The Get-IMMSupervisorCred cmdlet decryptes an encrypted credential file.
+.PARAMETER ClearText
+	Return UserName or Password unencrypted.
+.PARAMETER PSCredential
+	Return credentials as secure PowerShell PSCredential object.
+.EXAMPLE
+	PS C:\> Get-IMMInfo $IMM (Get-IMMSupervisorCred -PSCredential)
+.EXAMPLE
+	PS C:\> Get-IMMInfo $IMM -IMMLogin (Get-IMMSupervisorCred -ClearText UserName) -IMMPwd (Get-IMMSupervisorCred)
+.NOTES
+	Author: Roman Gelman
+.LINK
+	http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management
+#>
+	
+	[CmdletBinding(DefaultParameterSetName='STR')]
+	
+	Param (
+		[Parameter(Mandatory=$false,ParameterSetName='STR')]
+			[ValidateSet("UserName","Password")]
+		[string]$ClearText = 'Password'
+		,
+		[Parameter(Mandatory=$false,ParameterSetName='CRED')]
+		[switch]$PSCredential
+	)
+	
+	Begin {}
+	Process {
+		$Login = 'immadmin'
+		$CredFile = "$(Split-Path $PROFILE)\imm.cred"
+		If (Test-Path $CredFile -PathType Leaf) {$SecurePwd = Get-Content $CredFile |ConvertTo-SecureString} Else {Throw "No IMM credential file [$CredFile]"}
+		Try
+		{
+			$IMMCred = New-Object -TypeName 'System.Management.Automation.PSCredential'($Login,$SecurePwd) -EA Stop
+			
+			If ($PSCmdlet.ParameterSetName -eq 'STR') {
+				If ($ClearText -eq 'UserName') {return $Login}
+				Else                           {return $IMMCred.GetNetworkCredential().Password}
+			} Else {return $IMMCred}
+		}
+		Catch {Write-Warning "No [$Login] credential"}
+	}
+} #EndFunction Get-IMMSupervisorCred #22
