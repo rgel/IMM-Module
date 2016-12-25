@@ -1,11 +1,11 @@
-# IMM-Module
-### <b>[PowerShell module for IBM servers’ management</b>] (http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management)
+# ![cover](https://cloud.githubusercontent.com/assets/6964549/21469926/c1dded38-ca78-11e6-961f-e89d4acffa68.png) IMM-Module Repo
+### <b>[PowerShell module for IBM/LENOVO servers management</b>] (http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management)
 
 To install this module, drop the entire '<b>IMM-Module</b>' folder into one of your module directories.
 
 The default PowerShell module paths are listed in the `$env:PSModulePath` environment variable.
 
-To make it look better, split the paths in this manner `$env:PSModulePath -split ';'`
+To make it look better, split the paths in this manner: `$env:PSModulePath -split ';'`
 
 The default per-user module path is: `"$env:HOMEDRIVE$env:HOMEPATH\Documents\WindowsPowerShell\Modules"`.
 
@@ -29,4 +29,4 @@ VERSION|DATE|CHANGE|AFFECTED FUNCTIONS|DESCRIPTION
 1.2|23/07/2015|Bugfix|All functions that support `-Confirm` parameter|`$IMM` variable replaced by `$module` in `$PSCmdlet.ShouldProcess($module,"")` method
 1.1|27/05/2015|Function Improvements|Get-IMMISO, Mount-IMMISO|Added `rdmount` running process check in the `Begin` scope before function call
 1.1|27/05/2015|Function Improvements|Set-IMMServerBootOrder|Added `Windows Boot Manager` entry in `[ValidateSet()]` statement for all Boot devices
-1.0|17/05/2015|Initial release||
+1.0|17/05/2015|Release||
