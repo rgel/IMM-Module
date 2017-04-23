@@ -1,5 +1,5 @@
 # ![cover](https://cloud.githubusercontent.com/assets/6964549/21469926/c1dded38-ca78-11e6-961f-e89d4acffa68.png) IMM-Module Repo
-### <b>[PowerShell module for IBM/LENOVO servers management</b>] (http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management)
+### [<b>PowerShell module for IBM/LENOVO servers management</b>](http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management)
 
 To install this module, drop the entire '<b>IMM-Module</b>' folder into one of your module directories.
 
