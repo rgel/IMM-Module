@@ -7,7 +7,7 @@ $ASU,$RDM,$RDU - ASU package utilities
 $Plink         - plink.exe utility
 #>
 
-$ASUDIR = "E:\sh\IBM\ASU"
+$ASUDIR = "C:\IBM\ASU"
 $ASU    = "$ASUDIR\asu64.exe"
 $RDM    = "$ASUDIR\rdmount.exe"
 $RDU    = "$ASUDIR\rdumount.exe"
@@ -47,9 +47,9 @@ Function Get-IMMServerPowerState {
 	$immCol |sort PowerState,IMM |ft
 	$immCol |? {$_.PowerState -eq 'PoweredOn'} |select IMM |ft -HideTableHeaders
 .NOTES
-	Author: Roman Gelman
+	Author: Roman Gelman @rgelman75
 .LINK
-	http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management
+	https://ps1code.com/2015/08/27/kickstart-esxi-ibm-lenovo-powershell
 .OUTPUTS
 	Collection of PSObjects with 2 Properties: IMM,PowerState.
 	PowerState may be one of the three options: PoweredOn,PoweredOff,Unknown.
@@ -163,9 +163,9 @@ Function Start-IMMServer {
 	$immCol |sort PowerState,IMM |ft
 	$immCol |? {$_.PowerState -eq 'PoweredOff'} |select IMM |ft -HideTableHeaders
 .NOTES
-	Author: Roman Gelman
+	Author: Roman Gelman @rgelman75
 .LINK
-	http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management
+	https://ps1code.com/2015/08/27/kickstart-esxi-ibm-lenovo-powershell
 .OUTPUTS
 	Collection of PSObjects with 2 Properties: IMM,PowerState.
 	PowerState may be one of the two options: PoweredOn,Unknown.
@@ -276,9 +276,9 @@ Function Shutdown-IMMServerOS {
 	$immCol |sort PowerState,IMM |ft
 	$immCol |? {$_.PowerState -eq 'PoweredOff'} |select IMM |ft -HideTableHeaders
 .NOTES
-	Author: Roman Gelman
+	Author: Roman Gelman @rgelman75
 .LINK
-	http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management
+	https://ps1code.com/2015/08/27/kickstart-esxi-ibm-lenovo-powershell
 .OUTPUTS
 	Collection of PSObjects with 2 Properties: IMM,PowerState.
 	PowerState may be one of the two options: PoweredOff,Unknown.
@@ -392,9 +392,9 @@ Function Reboot-IMMServerOS {
 	$immCol |sort PowerState,IMM |ft
 	$immCol |? {$_.PowerState -eq 'PoweredOff'} |select IMM |ft -HideTableHeaders
 .NOTES
-	Author: Roman Gelman
+	Author: Roman Gelman @rgelman75
 .LINK
-	http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management
+	https://ps1code.com/2015/08/27/kickstart-esxi-ibm-lenovo-powershell
 .OUTPUTS
 	Collection of PSObjects with 2 Properties: IMM,PowerState.
 	PowerState may be one of the two options: Rebooted,Unknown.
@@ -508,9 +508,9 @@ Function Restart-IMM {
 	$immCol |sort PowerState,IMM |ft
 	$immCol |? {$_.PowerState -eq 'Restarted'} |select IMM |ft -HideTableHeaders
 .NOTES
-	Author: Roman Gelman
+	Author: Roman Gelman @rgelman75
 .LINK
-	http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management
+	https://ps1code.com/2015/08/27/kickstart-esxi-ibm-lenovo-powershell
 .OUTPUTS
 	Collection of PSObjects with 2 Properties: IMM,PowerState.
 	PowerState may be one of the two options: Restarted,Unknown.
@@ -625,9 +625,9 @@ Function Get-IMMInfo {
 	$immSubnet |? {$_.DisplayName -ne $_.HostName} |sort HostName |ft -AutoSize
 	$immSubnet |? {$_.HostName -ne ''} |sort HostName |Export-Csv -NoTypeInformation -Path "C:\reports\immSubnet98.csv"
 .NOTES
-	Author: Roman Gelman
+	Author: Roman Gelman @rgelman75
 .LINK
-	http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management
+	https://ps1code.com/2015/08/27/kickstart-esxi-ibm-lenovo-powershell
 .OUTPUTS
 	Collection of PSObjects with 8 Properties: IMM,DisplayName,HostName,Server,Model,Serial,Contact,Location.
 	Properties may be empty.
@@ -762,9 +762,9 @@ Function Get-IMMSettings {
 .EXAMPLE
 	Get-IMMSettings "10.99.1.150" |Out-GridView -Title "IMM settings"
 .NOTES
-	Author: Roman Gelman
+	Author: Roman Gelman @rgelman75
 .LINK
-	http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management
+	https://ps1code.com/2015/08/27/kickstart-esxi-ibm-lenovo-powershell
 .OUTPUTS
 	Collection of PSObjects with 4 Properties: IMM,Group,Param,Value or $null.
 	The major reasons for $null are bad credentials or
@@ -887,9 +887,9 @@ Function Get-IMMParam {
 	|Get-IMMParam -IMMCred $immCred -Param TimeZone
 	$immBulk |? {$_.TimeZone -ne ''} |sort TimeZone,IMM |ft -AutoSize
 .NOTES
-	Author: Roman Gelman
+	Author: Roman Gelman @rgelman75
 .LINK
-	http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management
+	https://ps1code.com/2015/08/27/kickstart-esxi-ibm-lenovo-powershell
 .OUTPUTS
 	Collection of PSObjects with 3 Properties: IMM,Param,Value.
 	All allowed values for '-Param' are [ValidateSet()] attribute members.
@@ -1048,9 +1048,9 @@ Function Set-IMMParam {
 	|select Count,@{Name='IMM';Expression={$_.Name}}, `
 	@{Name='Values';Expression={($_ |select -ExpandProperty Group).Value}} |ft -AutoSize
 .NOTES
-	Author: Roman Gelman
+	Author: Roman Gelman @rgelman75
 .LINK
-	http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management
+	https://ps1code.com/2015/08/27/kickstart-esxi-ibm-lenovo-powershell
 .OUTPUTS
 	Collection of PSObjects with 3 Properties: IMM,Param,Value.
 	All allowed values for '-Param' are [ValidateSet()] attribute members.
@@ -1199,9 +1199,9 @@ Function Get-IMMSystemEventLog {
 	$immSubnet |sort 'Used%',FreeBytes |Export-Csv -NoTypeInformation -Path "C:\reports\immSubnet98.csv"
 	$immSubnet |? {$_.Version -eq ''} |select IMM |fw -Column 6
 .NOTES
-	Author: Roman Gelman
+	Author: Roman Gelman @rgelman75
 .LINK
-	http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management
+	https://ps1code.com/2015/08/27/kickstart-esxi-ibm-lenovo-powershell
 .OUTPUTS
 	Collection of PSObjects with 7 Properties: IMM,Version,Entries,FreeBytes,Used%,LastAddTime,LastDelTime.
 	All properties except IMM may be empty.
@@ -1338,9 +1338,9 @@ Function Clear-IMMSystemEventLog {
 	Get-IMMSubnet "10.98.1.0" |Get-IMMSystemEventLog -IMMCred $immCred |? {$_.FreeBytes -eq 0} `
 	|Clear-IMMSystemEventLog -IMMCred $immCred -Confirm:$false |ft -AutoSize
 .NOTES
-	Author: Roman Gelman
+	Author: Roman Gelman @rgelman75
 .LINK
-	http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management
+	https://ps1code.com/2015/08/27/kickstart-esxi-ibm-lenovo-powershell
 .OUTPUTS
 	Collection of PSObjects with 7 Properties: IMM,Version,Entries,FreeBytes,Used%,LastAddTime,LastDelTime.
 	All properties except IMM may be empty.
@@ -1452,9 +1452,9 @@ Function Get-IMMSystemEventLogEntries {
 	$immCred = Get-Credential -UserName yourlogin -Message "IMM credentials"
 	Get-IMMSystemEventLogEntries -IMMCred $immCred -IMM esxhai1r |Export-Csv -NoTypeInformation -Path "C:\reports\SEL.csv"
 .NOTES
-	Author: Roman Gelman
+	Author: Roman Gelman @rgelman75
 .LINK
-	http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management
+	https://ps1code.com/2015/08/27/kickstart-esxi-ibm-lenovo-powershell
 .OUTPUTS
 	Collection of PSObjects with 7 Properties: IMM,Num,Date,Time,Entry,Event,Assert or $null.
 	The major reasons for $null are bad credentials or
@@ -1565,9 +1565,9 @@ Function Get-IMMSubnet {
 .EXAMPLE
 	Get-IMMSubnet "192.168.1.0" 100 120 111,115
 .NOTES
-	Author: Roman Gelman
+	Author: Roman Gelman @rgelman75
 .LINK
-	http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management
+	https://ps1code.com/2015/08/27/kickstart-esxi-ibm-lenovo-powershell
 .OUTPUTS
 	IPv4 addresses collection.
 #>
@@ -1639,9 +1639,9 @@ Function Connect-IMMSSH {
 	$immCred = Get-Credential -UserName yourlogin -Message "IMM credentials"
 	Connect-IMMSSH esxhai1r $immCred
 .NOTES
-	Author: Roman Gelman
+	Author: Roman Gelman @rgelman75
 .LINK
-	http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management
+	https://ps1code.com/2015/08/27/kickstart-esxi-ibm-lenovo-powershell
 #>
 
 [CmdletBinding(DefaultParameterSetName='USERPWDPAIR')]
@@ -1726,9 +1726,9 @@ Function Get-IMMServerBootOrder {
 	$immSubnet |? {$_.Boot1 -eq 'Hard Disk 0'} |ft -AutoSize
 	$immSubnet |sort Boot1,Boot2 |Export-Csv -NoTypeInformation -Path "C:\reports\immSubnet98.csv"
 .NOTES
-	Author: Roman Gelman
+	Author: Roman Gelman @rgelman75
 .LINK
-	http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management
+	https://ps1code.com/2015/08/27/kickstart-esxi-ibm-lenovo-powershell
 .OUTPUTS
 	Collection of PSObjects with 5 Properties: IMM,Boot1,Boot2,Boot3,Boot4.
 	Some properties may be empty (no boot device set at particular position).
@@ -1864,9 +1864,9 @@ Function Set-IMMServerBootOrder {
 	$immSubnet |? {$_.Boot1 -eq 'Hard Disk 0'} |ft -AutoSize
 	$immSubnet |sort Boot1,Boot2 |Export-Csv -NoTypeInformation -Path "C:\reports\immSubnet98.csv"
 .NOTES
-	Author: Roman Gelman
+	Author: Roman Gelman @rgelman75
 .LINK
-	http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management
+	https://ps1code.com/2015/08/27/kickstart-esxi-ibm-lenovo-powershell
 .OUTPUTS
 	Collection of PSObjects with 5 Properties: IMM,Boot1,Boot2,Boot3,Boot4.
 	Properties may be empty.
@@ -2019,9 +2019,9 @@ Function Mount-IMMISO {
 	$immCred = Get-Credential -UserName yourlogin -Message "IMM credentials"
 	Mount-IMMISO -IMM esxhai1r -IMMCred $immCred -ISO C:\ISO\Office_Professional_Plus_2013_64Bit_English.ISO
 .NOTES
-	Author: Roman Gelman
+	Author: Roman Gelman @rgelman75
 .LINK
-	http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management
+	https://ps1code.com/2015/08/27/kickstart-esxi-ibm-lenovo-powershell
 .OUTPUTS
 	PSObject with 2 Properties: IMM,ISO.
 	'ISO' property may be empty.
@@ -2151,9 +2151,9 @@ Function Get-IMMISO {
 	Else {$immIso = Mount-IMMISO -IMM esxhai30r -IMMCred $immCred -ISO .\SQL_Svr_Standard_Edtn_2014_64Bit_English.ISO}
 	If ($immIso.ISO -ne '') {"Successfully mounted"}
 .NOTES
-	Author: Roman Gelman
+	Author: Roman Gelman @rgelman75
 .LINK
-	http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management
+	https://ps1code.com/2015/08/27/kickstart-esxi-ibm-lenovo-powershell
 .OUTPUTS
 	'True' if some ISO mounted to Virtual Media Drive.
 	'False' in all other cases: no media mounted, connection failed and so on.
@@ -2235,9 +2235,9 @@ Function Unmount-IMMISO {
 .EXAMPLE
 	Unmount-IMMISO -IMM esxhai1r
 .NOTES
-	Author: Roman Gelman
+	Author: Roman Gelman @rgelman75
 .LINK
-	http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management
+	https://ps1code.com/2015/08/27/kickstart-esxi-ibm-lenovo-powershell
 .OUTPUTS
 	'True' if some ISO unmounted.
 	'False' in all other cases: no unmount operation has been performed, connection failed and so on.
@@ -2317,9 +2317,9 @@ Function Get-IMM2FoDKeys {
 	Get-IMM2FoDKeys '10.99.1.136','10.99.1.137','10.98.1.198' -IMMCred $immCred |sort IMM,Num `
 	|Export-Csv -NoTypeInformation -Path "C:\reports\FoD.csv"
 .NOTES
-	Author: Roman Gelman
+	Author: Roman Gelman @rgelman75
 .LINK
-	http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management
+	https://ps1code.com/2015/08/27/kickstart-esxi-ibm-lenovo-powershell
 .OUTPUTS
 	Collection of PSObjects with 7 Properties: IMM,Num,KeyID,Status,LicensedFoD,RemindUser,ExpiredDate or $null.
 	The major reasons for $null are bad credentials or
@@ -2444,9 +2444,9 @@ Function Add-IMM2FoDKey {
 	$immCred = Get-Credential -UserName yourlogin -Message "IMM credentials"
 	Add-IMM2FoDKey "10.99.1.136" -IMMCred $immCred -Key 'C:\FoD\ibm_fod_0001_7915KD6A3V7_anyos_noarch.key' |ft -AutoSize
 .NOTES
-	Author: Roman Gelman
+	Author: Roman Gelman @rgelman75
 .LINK
-	http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management
+	https://ps1code.com/2015/08/27/kickstart-esxi-ibm-lenovo-powershell
 .OUTPUTS
 	All currently installed FoD licene keys.
 	Collection of PSObjects with 7 Properties: IMM,Num,KeyID,Status,LicensedFoD,RemindUser,ExpiredDate or $null.
@@ -2549,9 +2549,9 @@ Function Get-IMMSupervisorCred {
 .EXAMPLE
 	PS C:\> Get-IMMInfo $IMM -IMMLogin (Get-IMMSupervisorCred -ClearText UserName) -IMMPwd (Get-IMMSupervisorCred)
 .NOTES
-	Author: Roman Gelman
+	Author: Roman Gelman @rgelman75
 .LINK
-	http://www.ps1code.com/single-post/2015/08/11/PowerShell-module-for-IBM-servers%E2%80%99-management
+	https://ps1code.com/2015/08/27/kickstart-esxi-ibm-lenovo-powershell
 #>
 	
 	[CmdletBinding(DefaultParameterSetName='STR')]
