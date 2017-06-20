@@ -49,7 +49,7 @@ Function Get-IMMServerPowerState {
 .NOTES
 	Author: Roman Gelman @rgelman75
 .LINK
-	https://ps1code.com/2015/08/27/kickstart-esxi-ibm-lenovo-powershell
+	https://ps1code.com/2015/08/11/imm-module
 .OUTPUTS
 	Collection of PSObjects with 2 Properties: IMM,PowerState.
 	PowerState may be one of the three options: PoweredOn,PoweredOff,Unknown.
@@ -165,7 +165,7 @@ Function Start-IMMServer {
 .NOTES
 	Author: Roman Gelman @rgelman75
 .LINK
-	https://ps1code.com/2015/08/27/kickstart-esxi-ibm-lenovo-powershell
+	https://ps1code.com/2015/08/11/imm-module
 .OUTPUTS
 	Collection of PSObjects with 2 Properties: IMM,PowerState.
 	PowerState may be one of the two options: PoweredOn,Unknown.
@@ -278,7 +278,7 @@ Function Shutdown-IMMServerOS {
 .NOTES
 	Author: Roman Gelman @rgelman75
 .LINK
-	https://ps1code.com/2015/08/27/kickstart-esxi-ibm-lenovo-powershell
+	https://ps1code.com/2015/08/11/imm-module
 .OUTPUTS
 	Collection of PSObjects with 2 Properties: IMM,PowerState.
 	PowerState may be one of the two options: PoweredOff,Unknown.
@@ -394,7 +394,7 @@ Function Reboot-IMMServerOS {
 .NOTES
 	Author: Roman Gelman @rgelman75
 .LINK
-	https://ps1code.com/2015/08/27/kickstart-esxi-ibm-lenovo-powershell
+	https://ps1code.com/2015/08/11/imm-module
 .OUTPUTS
 	Collection of PSObjects with 2 Properties: IMM,PowerState.
 	PowerState may be one of the two options: Rebooted,Unknown.
@@ -510,7 +510,7 @@ Function Restart-IMM {
 .NOTES
 	Author: Roman Gelman @rgelman75
 .LINK
-	https://ps1code.com/2015/08/27/kickstart-esxi-ibm-lenovo-powershell
+	https://ps1code.com/2015/08/11/imm-module
 .OUTPUTS
 	Collection of PSObjects with 2 Properties: IMM,PowerState.
 	PowerState may be one of the two options: Restarted,Unknown.
@@ -627,7 +627,7 @@ Function Get-IMMInfo {
 .NOTES
 	Author: Roman Gelman @rgelman75
 .LINK
-	https://ps1code.com/2015/08/27/kickstart-esxi-ibm-lenovo-powershell
+	https://ps1code.com/2015/08/11/imm-module
 .OUTPUTS
 	Collection of PSObjects with 8 Properties: IMM,DisplayName,HostName,Server,Model,Serial,Contact,Location.
 	Properties may be empty.
@@ -764,7 +764,7 @@ Function Get-IMMSettings {
 .NOTES
 	Author: Roman Gelman @rgelman75
 .LINK
-	https://ps1code.com/2015/08/27/kickstart-esxi-ibm-lenovo-powershell
+	https://ps1code.com/2015/08/11/imm-module
 .OUTPUTS
 	Collection of PSObjects with 4 Properties: IMM,Group,Param,Value or $null.
 	The major reasons for $null are bad credentials or
@@ -889,7 +889,7 @@ Function Get-IMMParam {
 .NOTES
 	Author: Roman Gelman @rgelman75
 .LINK
-	https://ps1code.com/2015/08/27/kickstart-esxi-ibm-lenovo-powershell
+	https://ps1code.com/2015/08/11/imm-module
 .OUTPUTS
 	Collection of PSObjects with 3 Properties: IMM,Param,Value.
 	All allowed values for '-Param' are [ValidateSet()] attribute members.
@@ -1050,7 +1050,7 @@ Function Set-IMMParam {
 .NOTES
 	Author: Roman Gelman @rgelman75
 .LINK
-	https://ps1code.com/2015/08/27/kickstart-esxi-ibm-lenovo-powershell
+	https://ps1code.com/2015/08/11/imm-module
 .OUTPUTS
 	Collection of PSObjects with 3 Properties: IMM,Param,Value.
 	All allowed values for '-Param' are [ValidateSet()] attribute members.
@@ -1201,7 +1201,7 @@ Function Get-IMMSystemEventLog {
 .NOTES
 	Author: Roman Gelman @rgelman75
 .LINK
-	https://ps1code.com/2015/08/27/kickstart-esxi-ibm-lenovo-powershell
+	https://ps1code.com/2015/08/11/imm-module
 .OUTPUTS
 	Collection of PSObjects with 7 Properties: IMM,Version,Entries,FreeBytes,Used%,LastAddTime,LastDelTime.
 	All properties except IMM may be empty.
@@ -1340,7 +1340,7 @@ Function Clear-IMMSystemEventLog {
 .NOTES
 	Author: Roman Gelman @rgelman75
 .LINK
-	https://ps1code.com/2015/08/27/kickstart-esxi-ibm-lenovo-powershell
+	https://ps1code.com/2015/08/11/imm-module
 .OUTPUTS
 	Collection of PSObjects with 7 Properties: IMM,Version,Entries,FreeBytes,Used%,LastAddTime,LastDelTime.
 	All properties except IMM may be empty.
@@ -1454,7 +1454,7 @@ Function Get-IMMSystemEventLogEntries {
 .NOTES
 	Author: Roman Gelman @rgelman75
 .LINK
-	https://ps1code.com/2015/08/27/kickstart-esxi-ibm-lenovo-powershell
+	https://ps1code.com/2015/08/11/imm-module
 .OUTPUTS
 	Collection of PSObjects with 7 Properties: IMM,Num,Date,Time,Entry,Event,Assert or $null.
 	The major reasons for $null are bad credentials or
@@ -1567,7 +1567,7 @@ Function Get-IMMSubnet {
 .NOTES
 	Author: Roman Gelman @rgelman75
 .LINK
-	https://ps1code.com/2015/08/27/kickstart-esxi-ibm-lenovo-powershell
+	https://ps1code.com/2015/08/11/imm-module
 .OUTPUTS
 	IPv4 addresses collection.
 #>
@@ -1641,7 +1641,7 @@ Function Connect-IMMSSH {
 .NOTES
 	Author: Roman Gelman @rgelman75
 .LINK
-	https://ps1code.com/2015/08/27/kickstart-esxi-ibm-lenovo-powershell
+	https://ps1code.com/2015/08/11/imm-module
 #>
 
 [CmdletBinding(DefaultParameterSetName='USERPWDPAIR')]
@@ -1728,7 +1728,7 @@ Function Get-IMMServerBootOrder {
 .NOTES
 	Author: Roman Gelman @rgelman75
 .LINK
-	https://ps1code.com/2015/08/27/kickstart-esxi-ibm-lenovo-powershell
+	https://ps1code.com/2015/08/11/imm-module
 .OUTPUTS
 	Collection of PSObjects with 5 Properties: IMM,Boot1,Boot2,Boot3,Boot4.
 	Some properties may be empty (no boot device set at particular position).
@@ -1866,7 +1866,7 @@ Function Set-IMMServerBootOrder {
 .NOTES
 	Author: Roman Gelman @rgelman75
 .LINK
-	https://ps1code.com/2015/08/27/kickstart-esxi-ibm-lenovo-powershell
+	https://ps1code.com/2015/08/11/imm-module
 .OUTPUTS
 	Collection of PSObjects with 5 Properties: IMM,Boot1,Boot2,Boot3,Boot4.
 	Properties may be empty.
@@ -2021,7 +2021,7 @@ Function Mount-IMMISO {
 .NOTES
 	Author: Roman Gelman @rgelman75
 .LINK
-	https://ps1code.com/2015/08/27/kickstart-esxi-ibm-lenovo-powershell
+	https://ps1code.com/2015/08/11/imm-module
 .OUTPUTS
 	PSObject with 2 Properties: IMM,ISO.
 	'ISO' property may be empty.
@@ -2153,7 +2153,7 @@ Function Get-IMMISO {
 .NOTES
 	Author: Roman Gelman @rgelman75
 .LINK
-	https://ps1code.com/2015/08/27/kickstart-esxi-ibm-lenovo-powershell
+	https://ps1code.com/2015/08/11/imm-module
 .OUTPUTS
 	'True' if some ISO mounted to Virtual Media Drive.
 	'False' in all other cases: no media mounted, connection failed and so on.
@@ -2237,7 +2237,7 @@ Function Unmount-IMMISO {
 .NOTES
 	Author: Roman Gelman @rgelman75
 .LINK
-	https://ps1code.com/2015/08/27/kickstart-esxi-ibm-lenovo-powershell
+	https://ps1code.com/2015/08/11/imm-module
 .OUTPUTS
 	'True' if some ISO unmounted.
 	'False' in all other cases: no unmount operation has been performed, connection failed and so on.
@@ -2319,7 +2319,7 @@ Function Get-IMM2FoDKeys {
 .NOTES
 	Author: Roman Gelman @rgelman75
 .LINK
-	https://ps1code.com/2015/08/27/kickstart-esxi-ibm-lenovo-powershell
+	https://ps1code.com/2015/08/11/imm-module
 .OUTPUTS
 	Collection of PSObjects with 7 Properties: IMM,Num,KeyID,Status,LicensedFoD,RemindUser,ExpiredDate or $null.
 	The major reasons for $null are bad credentials or
@@ -2446,7 +2446,7 @@ Function Add-IMM2FoDKey {
 .NOTES
 	Author: Roman Gelman @rgelman75
 .LINK
-	https://ps1code.com/2015/08/27/kickstart-esxi-ibm-lenovo-powershell
+	https://ps1code.com/2015/08/11/imm-module
 .OUTPUTS
 	All currently installed FoD licene keys.
 	Collection of PSObjects with 7 Properties: IMM,Num,KeyID,Status,LicensedFoD,RemindUser,ExpiredDate or $null.
@@ -2551,7 +2551,7 @@ Function Get-IMMSupervisorCred {
 .NOTES
 	Author: Roman Gelman @rgelman75
 .LINK
-	https://ps1code.com/2015/08/27/kickstart-esxi-ibm-lenovo-powershell
+	https://ps1code.com/2015/08/11/imm-module
 #>
 	
 	[CmdletBinding(DefaultParameterSetName='STR')]
