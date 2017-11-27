@@ -7,7 +7,7 @@ $ASU,$RDM,$RDU - ASU package utilities
 $Plink         - plink.exe utility
 #>
 
-$ASUDIR = "C:\IBM\ASU"
+$ASUDIR = "E:\sh\IBM\ASU"
 $ASU    = "$ASUDIR\asu64.exe"
 $RDM    = "$ASUDIR\rdmount.exe"
 $RDU    = "$ASUDIR\rdumount.exe"
@@ -49,7 +49,7 @@ Function Get-IMMServerPowerState {
 .NOTES
 	Author: Roman Gelman @rgelman75
 .LINK
-	https://ps1code.com/2015/08/11/imm-module
+	https://ps1code.com/2015/08/11/imm-module/
 .OUTPUTS
 	Collection of PSObjects with 2 Properties: IMM,PowerState.
 	PowerState may be one of the three options: PoweredOn,PoweredOff,Unknown.
@@ -165,7 +165,7 @@ Function Start-IMMServer {
 .NOTES
 	Author: Roman Gelman @rgelman75
 .LINK
-	https://ps1code.com/2015/08/11/imm-module
+	https://ps1code.com/2015/08/11/imm-module/
 .OUTPUTS
 	Collection of PSObjects with 2 Properties: IMM,PowerState.
 	PowerState may be one of the two options: PoweredOn,Unknown.
@@ -278,7 +278,7 @@ Function Shutdown-IMMServerOS {
 .NOTES
 	Author: Roman Gelman @rgelman75
 .LINK
-	https://ps1code.com/2015/08/11/imm-module
+	https://ps1code.com/2015/08/11/imm-module/
 .OUTPUTS
 	Collection of PSObjects with 2 Properties: IMM,PowerState.
 	PowerState may be one of the two options: PoweredOff,Unknown.
@@ -394,7 +394,7 @@ Function Reboot-IMMServerOS {
 .NOTES
 	Author: Roman Gelman @rgelman75
 .LINK
-	https://ps1code.com/2015/08/11/imm-module
+	https://ps1code.com/2015/08/11/imm-module/
 .OUTPUTS
 	Collection of PSObjects with 2 Properties: IMM,PowerState.
 	PowerState may be one of the two options: Rebooted,Unknown.
@@ -510,7 +510,7 @@ Function Restart-IMM {
 .NOTES
 	Author: Roman Gelman @rgelman75
 .LINK
-	https://ps1code.com/2015/08/11/imm-module
+	https://ps1code.com/2015/08/11/imm-module/
 .OUTPUTS
 	Collection of PSObjects with 2 Properties: IMM,PowerState.
 	PowerState may be one of the two options: Restarted,Unknown.
@@ -627,7 +627,7 @@ Function Get-IMMInfo {
 .NOTES
 	Author: Roman Gelman @rgelman75
 .LINK
-	https://ps1code.com/2015/08/11/imm-module
+	https://ps1code.com/2015/08/11/imm-module/
 .OUTPUTS
 	Collection of PSObjects with 8 Properties: IMM,DisplayName,HostName,Server,Model,Serial,Contact,Location.
 	Properties may be empty.
@@ -764,7 +764,7 @@ Function Get-IMMSettings {
 .NOTES
 	Author: Roman Gelman @rgelman75
 .LINK
-	https://ps1code.com/2015/08/11/imm-module
+	https://ps1code.com/2015/08/11/imm-module/
 .OUTPUTS
 	Collection of PSObjects with 4 Properties: IMM,Group,Param,Value or $null.
 	The major reasons for $null are bad credentials or
@@ -889,7 +889,7 @@ Function Get-IMMParam {
 .NOTES
 	Author: Roman Gelman @rgelman75
 .LINK
-	https://ps1code.com/2015/08/11/imm-module
+	https://ps1code.com/2015/08/11/imm-module/
 .OUTPUTS
 	Collection of PSObjects with 3 Properties: IMM,Param,Value.
 	All allowed values for '-Param' are [ValidateSet()] attribute members.
@@ -1050,7 +1050,7 @@ Function Set-IMMParam {
 .NOTES
 	Author: Roman Gelman @rgelman75
 .LINK
-	https://ps1code.com/2015/08/11/imm-module
+	https://ps1code.com/2015/08/11/imm-module/
 .OUTPUTS
 	Collection of PSObjects with 3 Properties: IMM,Param,Value.
 	All allowed values for '-Param' are [ValidateSet()] attribute members.
@@ -1201,7 +1201,7 @@ Function Get-IMMSystemEventLog {
 .NOTES
 	Author: Roman Gelman @rgelman75
 .LINK
-	https://ps1code.com/2015/08/11/imm-module
+	https://ps1code.com/2015/08/11/imm-module/
 .OUTPUTS
 	Collection of PSObjects with 7 Properties: IMM,Version,Entries,FreeBytes,Used%,LastAddTime,LastDelTime.
 	All properties except IMM may be empty.
@@ -1340,7 +1340,7 @@ Function Clear-IMMSystemEventLog {
 .NOTES
 	Author: Roman Gelman @rgelman75
 .LINK
-	https://ps1code.com/2015/08/11/imm-module
+	https://ps1code.com/2015/08/11/imm-module/
 .OUTPUTS
 	Collection of PSObjects with 7 Properties: IMM,Version,Entries,FreeBytes,Used%,LastAddTime,LastDelTime.
 	All properties except IMM may be empty.
@@ -1417,7 +1417,7 @@ Process {
 
 } #EndFunction Clear-IMMSystemEventLog #11
 
-Function Get-IMMSystemEventLogEntries {
+Function Get-IMMSystemEventLogEntry {
 
 <#
 .SYNOPSIS
@@ -1438,31 +1438,32 @@ Function Get-IMMSystemEventLogEntries {
 .PARAMETER ASUExec
 	IBM ASU executable full path (optional, default set by '$ASU' variable).
 .EXAMPLE
-	Get-IMMSystemEventLogEntries esxhai1r
+	Get-IMMSystemEventLogEntry esxhai1r
 .EXAMPLE
-	Get-IMMSystemEventLogEntries -IMM esxhai1r -IMMLogin yourlogin -IMMPwd yourpassword |select -Last 20 |ft -AutoSize
-.EXAMPLE
-	$immCred = Get-Credential -UserName yourlogin -Message "IMM credentials"
-	Get-IMMSystemEventLogEntries -IMMCred $immCred -IMM esxhai1r |sort Date,Time -Descending |select -First 10 |ft -AutoSize
+	Get-IMMSystemEventLogEntry -IMM esxhai1r -IMMLogin yourlogin -IMMPwd yourpassword |select -Last 20 |ft -AutoSize
 .EXAMPLE
 	$immCred = Get-Credential -UserName yourlogin -Message "IMM credentials"
-	Get-IMMSystemEventLogEntries -IMMCred $immCred -IMM esxhai1r `
-	|? {$_.Event -like 'system boot*'} |sort Date,Time -Descending |ft -AutoSize
+	Get-IMMSystemEventLogEntry -IMMCred $immCred -IMM esxhai1r |sort Date -Descending |select -First 10 |ft -AutoSize
 .EXAMPLE
 	$immCred = Get-Credential -UserName yourlogin -Message "IMM credentials"
-	Get-IMMSystemEventLogEntries -IMMCred $immCred -IMM esxhai1r |Export-Csv -NoTypeInformation -Path "C:\reports\SEL.csv"
+	Get-IMMSystemEventLogEntry -IMMCred $immCred -IMM esxhai1r |
+	? {$_.Event -like 'system boot*'} |sort Num -Descending |ogv -Title SEL
+.EXAMPLE
+	$immCred = Get-Credential -UserName yourlogin -Message "IMM credentials"
+	Get-IMMSystemEventLogEntry -IMMCred $immCred -IMM esxhai1r |Export-Csv -NoTypeInformation -Path "C:\reports\SEL.csv"
 .NOTES
 	Author: Roman Gelman @rgelman75
 .LINK
-	https://ps1code.com/2015/08/11/imm-module
+	https://ps1code.com/2015/08/11/imm-module/
 .OUTPUTS
-	Collection of PSObjects with 7 Properties: IMM,Num,Date,Time,Entry,Event,Assert or $null.
+	Collection of PSObjects with 6 Properties: IMM,Num,Date,Entry,Event,Assert or $null.
 	The major reasons for $null are bad credentials or
 	specified Login ID doesn't have supervisor rights on IMM or
 	no DNS resolve.
 #>
-
-[CmdletBinding(DefaultParameterSetName='USERPWDPAIR')]
+	
+[CmdletBinding(DefaultParameterSetName = 'USERPWDPAIR')]
+[Alias("Get-IMMSystemEventLogEntries")]
 
 Param (
 
@@ -1526,9 +1527,8 @@ Process {
 
 				$Properties = [ordered]@{
 					IMM    = $IMM
-					Num    = $line[0]
-					Date   = $line[1]
-					Time   = $line[2]
+					Num    = [int]$line[0]
+					Date   = [datetime]"$($line[1]) $($line[2])"
 					Entry  = $line[3]
 					Event  = $line[4]
 					Assert = $line[5]
@@ -1540,7 +1540,7 @@ Process {
 		} Else {$Object = $null}
 }
 
-} #EndFunction Get-IMMSystemEventLogEntries #12
+} #EndFunction Get-IMMSystemEventLogEntry #12
 
 Function Get-IMMSubnet {
 
@@ -1567,7 +1567,7 @@ Function Get-IMMSubnet {
 .NOTES
 	Author: Roman Gelman @rgelman75
 .LINK
-	https://ps1code.com/2015/08/11/imm-module
+	https://ps1code.com/2015/08/11/imm-module/
 .OUTPUTS
 	IPv4 addresses collection.
 #>
@@ -1641,7 +1641,7 @@ Function Connect-IMMSSH {
 .NOTES
 	Author: Roman Gelman @rgelman75
 .LINK
-	https://ps1code.com/2015/08/11/imm-module
+	https://ps1code.com/2015/08/11/imm-module/
 #>
 
 [CmdletBinding(DefaultParameterSetName='USERPWDPAIR')]
@@ -1728,7 +1728,7 @@ Function Get-IMMServerBootOrder {
 .NOTES
 	Author: Roman Gelman @rgelman75
 .LINK
-	https://ps1code.com/2015/08/11/imm-module
+	https://ps1code.com/2015/08/11/imm-module/
 .OUTPUTS
 	Collection of PSObjects with 5 Properties: IMM,Boot1,Boot2,Boot3,Boot4.
 	Some properties may be empty (no boot device set at particular position).
@@ -1842,13 +1842,13 @@ Function Set-IMMServerBootOrder {
 	IMM Supervisor Credentials (Get-Credential Cmdlet object).
 .PARAMETER ASUExec
 	IBM ASU executable full path (optional, default set by '$ASU' variable).
-.PARAMETER Boot1 (optional, default is 'CD/DVD Rom')
+.PARAMETER Boot1
 	First Boot Device
-.PARAMETER Boot2 (optional, default is 'Floppy Disk')
+.PARAMETER Boot2
 	Second Boot Device
-.PARAMETER Boot3 (optional, default is 'Hard Disk 0')
+.PARAMETER Boot3
 	Third Boot Device
-.PARAMETER Boot4 (optional, default is 'PXE Network')
+.PARAMETER Boot4
 	Fourth Boot Device
 .EXAMPLE
 	Set-IMMServerBootOrder esxhai1r
@@ -1866,7 +1866,7 @@ Function Set-IMMServerBootOrder {
 .NOTES
 	Author: Roman Gelman @rgelman75
 .LINK
-	https://ps1code.com/2015/08/11/imm-module
+	https://ps1code.com/2015/08/11/imm-module/
 .OUTPUTS
 	Collection of PSObjects with 5 Properties: IMM,Boot1,Boot2,Boot3,Boot4.
 	Properties may be empty.
@@ -1907,19 +1907,19 @@ Param (
 	[System.String]$ASUExec = $ASU
 	,
 	[Parameter(Mandatory=$false,Position=4,HelpMessage="First boot device")]
-		[ValidateSet('CD/DVD Rom','Floppy Disk','Hard Disk 0','PXE Network','Windows Boot Manager','VDIESXi5.5','ESXi5VDI')]
+		[ValidateSet('CD/DVD Rom','Floppy Disk','Hard Disk 0','PXE Network','Windows Boot Manager','Embedded Hypervisor')]
 	[System.String]$Boot1 = 'CD/DVD Rom'
 	,
 	[Parameter(Mandatory=$false,Position=5,HelpMessage="Second boot device")]
-		[ValidateSet('CD/DVD Rom','Floppy Disk','Hard Disk 0','PXE Network','Windows Boot Manager','VDIESXi5.5','ESXi5VDI')]
-	[System.String]$Boot2 = 'Floppy Disk'
+		[ValidateSet('CD/DVD Rom','Floppy Disk','Hard Disk 0','PXE Network','Windows Boot Manager','Embedded Hypervisor')]
+	[System.String]$Boot2 = 'Embedded Hypervisor'
 	,
 	[Parameter(Mandatory=$false,Position=6,HelpMessage="Third boot device")]
-		[ValidateSet('CD/DVD Rom','Floppy Disk','Hard Disk 0','PXE Network','Windows Boot Manager','VDIESXi5.5','ESXi5VDI')]
+		[ValidateSet('CD/DVD Rom','Floppy Disk','Hard Disk 0','PXE Network','Windows Boot Manager','Embedded Hypervisor')]
 	[System.String]$Boot3 = 'Hard Disk 0'
 	,
 	[Parameter(Mandatory=$false,Position=7,HelpMessage="Fourth boot device")]
-		[ValidateSet('CD/DVD Rom','Floppy Disk','Hard Disk 0','PXE Network','Windows Boot Manager','VDIESXi5.5','ESXi5VDI','')]
+		[ValidateSet('CD/DVD Rom','Floppy Disk','Hard Disk 0','PXE Network','Windows Boot Manager','Embedded Hypervisor','')]
 	[System.String]$Boot4 = 'PXE Network'
 	
 )
@@ -2021,7 +2021,7 @@ Function Mount-IMMISO {
 .NOTES
 	Author: Roman Gelman @rgelman75
 .LINK
-	https://ps1code.com/2015/08/11/imm-module
+	https://ps1code.com/2015/08/11/imm-module/
 .OUTPUTS
 	PSObject with 2 Properties: IMM,ISO.
 	'ISO' property may be empty.
@@ -2056,7 +2056,7 @@ Param (
 	[System.Management.Automation.PSCredential]$IMMCred
 	,
 	[Parameter(Mandatory=$false,Position=3,HelpMessage="IBM RDCLI executable full path")]
-		[ValidatePattern("^rdmount\.exe$")]
+		[ValidatePattern("rdmount\.exe$")]
 		[ValidateScript({Test-Path -Path FileSystem::$_ -PathType Leaf})]
 		[Alias("RDMExecutable")]
 	[System.String]$RDMExec = $RDM
@@ -2153,7 +2153,7 @@ Function Get-IMMISO {
 .NOTES
 	Author: Roman Gelman @rgelman75
 .LINK
-	https://ps1code.com/2015/08/11/imm-module
+	https://ps1code.com/2015/08/11/imm-module/
 .OUTPUTS
 	'True' if some ISO mounted to Virtual Media Drive.
 	'False' in all other cases: no media mounted, connection failed and so on.
@@ -2185,7 +2185,7 @@ Param (
 	[System.Management.Automation.PSCredential]$IMMCred
 	,
 	[Parameter(Mandatory=$false,Position=3,HelpMessage="IBM RDCLI executable full path")]
-		[ValidatePattern("^rdmount\.exe$")]
+		[ValidatePattern("rdmount\.exe$")]
 		[ValidateScript({Test-Path -Path FileSystem::$_ -PathType Leaf})]
 		[Alias("RDMExecutable")]
 	[System.String]$RDMExec = $RDM
@@ -2237,7 +2237,7 @@ Function Unmount-IMMISO {
 .NOTES
 	Author: Roman Gelman @rgelman75
 .LINK
-	https://ps1code.com/2015/08/11/imm-module
+	https://ps1code.com/2015/08/11/imm-module/
 .OUTPUTS
 	'True' if some ISO unmounted.
 	'False' in all other cases: no unmount operation has been performed, connection failed and so on.
@@ -2319,7 +2319,7 @@ Function Get-IMM2FoDKeys {
 .NOTES
 	Author: Roman Gelman @rgelman75
 .LINK
-	https://ps1code.com/2015/08/11/imm-module
+	https://ps1code.com/2015/08/11/imm-module/
 .OUTPUTS
 	Collection of PSObjects with 7 Properties: IMM,Num,KeyID,Status,LicensedFoD,RemindUser,ExpiredDate or $null.
 	The major reasons for $null are bad credentials or
@@ -2446,7 +2446,7 @@ Function Add-IMM2FoDKey {
 .NOTES
 	Author: Roman Gelman @rgelman75
 .LINK
-	https://ps1code.com/2015/08/11/imm-module
+	https://ps1code.com/2015/08/11/imm-module/
 .OUTPUTS
 	All currently installed FoD licene keys.
 	Collection of PSObjects with 7 Properties: IMM,Num,KeyID,Status,LicensedFoD,RemindUser,ExpiredDate or $null.
@@ -2551,7 +2551,7 @@ Function Get-IMMSupervisorCred {
 .NOTES
 	Author: Roman Gelman @rgelman75
 .LINK
-	https://ps1code.com/2015/08/11/imm-module
+	https://ps1code.com/2015/08/11/imm-module/
 #>
 	
 	[CmdletBinding(DefaultParameterSetName='STR')]
@@ -2567,7 +2567,7 @@ Function Get-IMMSupervisorCred {
 	
 	Begin {}
 	Process {
-		$Login = 'immadmin'
+		$Login = 'ribadmin'
 		$CredFile = "$(Split-Path $PROFILE)\imm.cred"
 		If (Test-Path $CredFile -PathType Leaf) {$SecurePwd = Get-Content $CredFile |ConvertTo-SecureString} Else {Throw "No IMM credential file [$CredFile]"}
 		Try
