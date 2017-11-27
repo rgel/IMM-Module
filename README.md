@@ -25,6 +25,7 @@ For help on each individual cmdlet or function, run `Get-Help CmdletName -Full [
 
 VERSION|DATE|CHANGE|AFFECTED FUNCTIONS|DESCRIPTION
 ----|----|----|----|----|
+1.5.1|21/11/2017|Function Improvements|Get-IMMSystemEventLogEntry|Changed data type of `Num` and `Date` properties
 1.4|22/12/2016|New Function and Bugfixes|ALL|Added new function `Get-IMMSupervisorCred`
 1.3|25/08/2015|Function Improvements|Get-IMMSubnet|Added new parameter `-ExcludeIP`
 1.2|23/07/2015|Content-based help Improvements|ALL|`.PARAMETER` tags edited
